@@ -1,0 +1,201 @@
+/* Base */
+
+ui-view {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+md-toolbar {
+  flex-direction: row;
+  align-items: center;
+}
+md-toolbar h3 {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+}
+md-toolbar .menu {
+  background-color: transparent;
+  min-width: 48px;
+}
+md-dialog-actions button:last-child {
+  margin-right: 20px;
+}
+
+/* Card image */
+
+img.headline {
+  object-fit: cover;
+  max-height: 180px;
+}
+
+/* Sign in */
+
+.instructions {
+  max-width: 600px;
+}
+.sign-in {
+  width: 450px;
+}
+.sign-in h4 {
+  margin-top: 0;
+}
+.sign-in md-input-container,
+.sign-in md-checkbox {
+  width: 100%;
+  amargin-bottom: 0;
+}
+img.large-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.input-hint {
+  font-size: 12px;
+  line-height: 14px;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  color: grey;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+md-input-container .input-hint {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 7px;
+  white-space: nowrap;
+}
+md-input-container .input-hint.ng-hide,
+md-input-container .input-hint.ng-enter,
+md-input-container .input-hint.ng-leave.ng-leave-active {
+  bottom: 26px;
+  opacity: 0;
+}
+md-input-container .input-hint.ng-leave,
+md-input-container .input-hint.ng-enter.ng-enter-active {
+  bottom: 7px;
+  opacity: 1;
+}
+
+/* Join game dialog */
+
+md-dialog md-input-container {
+  margin-bottom: 0;
+}
+
+/* Lobby players list */
+
+md-icon.small {
+  font-size: 18px;
+}
+md-icon.large {
+  font-size: 36px;
+}
+
+/* Word grid */
+
+.grid-nav {
+  height: 100%;
+}
+.fullwidth {
+  width: 100%;
+}
+.grid-container {
+  position: absolute;
+  top: 56px;
+  bottom: 0;
+}
+.grid {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+.word {
+  overflow: hidden;
+  position: relative;
+  flex: 1 1 18%;
+  margin: 1%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F5F5;
+  color: #212121;
+  outline: none;
+}
+.word:focus {
+  border: 1px solid red;
+}
+.word .text {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 2.5vmax;
+  line-height: 110%;
+  overflow: hidden;
+  text-transform: uppercase;
+  word-wrap: break-word;
+}
+.word.guessed .text {
+  opacity: .25;
+}
+.grid.announcer .word.guessed {
+  opacity: .25;
+}
+.grid.announcer .word.guessed .text {
+  opacity: .75;
+}
+.announcer .word.team--1,
+.guessed.word.team--1 {
+  /* Grey 900 */
+  background: #212121;
+  /* White */
+  color: #FFFFFF;
+}
+.announcer .word.team-1,
+.guessed.word.team-1 {
+  /* Light Blue 900 */
+  background: #01579B;
+  /* Light Blue 100 */
+  color: #B3E5FC;
+}
+.announcer .word.team-2,
+.guessed.word.team-2 {
+  /* Red 900 */
+  background: #B71C1C;
+  /* Red 100 */
+  color: #FFCDD2;
+}
+.announcer .word.team-0,
+.guessed.word.team-0 {
+  /* Grey 500 */
+  background: #9E9E9E;
+  /* Grey 100 */
+  color: #F5F5F5;
+}
+md-toolbar.team--1 {
+  /* Grey 900 */
+  background: #212121;
+}
+md-toolbar.team-1 {
+  /* Light Blue 900 */
+  background: #01579B;
+}
+md-toolbar.team-2 {
+  /* Red 900 */
+  background: #B71C1C;
+}
+.team-1-color {
+  /* Light Blue 900 */
+  color: #01579B;
+}
+.team-2-color {
+  /* Red 900 */
+  color: #B71C1C;
+}
