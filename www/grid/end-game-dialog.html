@@ -1,0 +1,23 @@
+<md-dialog>
+  <md-toolbar class="team-{{dlg.game.winner}}">
+    <div class="md-toolbar-tools">
+      <h2>Game Over</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="dlg.cancel()">
+        <md-icon>close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <p>
+        {{ dlg.game.winner == 1 ? 'Blue team wins!' : dlg.game.winner == 2 ? 'Red team wins!' : 'Everyone loses!'
+        }}
+      </p>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <md-button ng-click="dlg.cancel()">Review</md-button>
+    <md-button class="md-primary" ng-click="dlg.beginGame()">Play Again</md-button>
+  </md-dialog-actions>
+</md-dialog>

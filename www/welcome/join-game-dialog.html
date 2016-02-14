@@ -1,0 +1,25 @@
+<md-dialog>
+  <form name="joinForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Join Game</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="dlg.cancel()">
+          <md-icon>close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content class="md-dialog-content">
+      <div>
+        <md-input-container>
+          <input name="gameId" ng-model="dlg.gameId" type="text" placeholder="Game number" pattern="[0-9]{1,10}"
+          required>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="dlg.cancel()">Cancel</md-button>
+      <md-button class="md-primary" ng-disabled="joinForm.$invalid" ng-click="dlg.joinGame()">Join Game</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

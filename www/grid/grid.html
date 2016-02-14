@@ -1,0 +1,54 @@
+<div class="grid-nav" layout="row" flex>
+  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" md-component-id="left" ng-click="ul.toggleList()"
+  md-is-locked-open="$mdMedia('gt-sm')">
+    <md-toolbar class="md-whiteframe-z1">
+      <h3>Players</h3>
+    </md-toolbar>
+
+    <md-list class="players">
+      <md-subheader class="md-no-sticky team-1-color">Blue team ({{ +(c.game.players | filter : {team: 1}).length }})</md-subheader>
+      <md-list-item class="md-3-line" ng-repeat="player in c.game.players | filter : {team: 1} | orderBy : ['announcer', 'joinTime', 'displayName']">
+        <img gravatar-src="player.gravatar" class="md-avatar" alt="{{player.displayName}}">
+        <div class="md-list-item-text">
+          <h3>{{ player.displayName || 'Anonymous' }}</h3>
+          <h4>{{ player.announcer ? 'Announcing' : 'Guessing' }}</h4>
+          <p>Joined {{ player.joinTime | date : 'h:mm:ss a' }}</p>
+          <md-icon class="md-secondary team-1-color" ng-show="player.announcer">record_voice_over</md-icon>
+        </div>
+      </md-list-item>
+
+      <div ng-if="c.game.teams == 2">
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky team-2-color">Red team ({{ +(c.game.players | filter : {team: 2}).length }})</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="player in c.game.players | filter : {team: 2} | orderBy : ['announcer', 'joinTime', 'displayName']">
+          <img gravatar-src="player.gravatar" class="md-avatar" alt="{{player.displayName}}">
+          <div class="md-list-item-text">
+            <h3>{{ player.displayName || 'Anonymous' }}</h3>
+            <h4>{{ player.announcer ? 'Announcing' : 'Guessing' }}</h4>
+            <p>Joined {{ player.joinTime | date : 'h:mm:ss a' }}</p>
+            <md-icon class="md-secondary team-2-color" ng-show="player.announcer">record_voice_over</md-icon>
+          </div>
+        </md-list-item>
+      </div>
+    </md-list>
+  </md-sidenav>
+
+  <div class="fullwidth">
+    <md-toolbar class="md-whiteframe-z1 team-{{c.game.me.team}}">
+      <md-button id="main" class="menu" hide-gt-sm ng-click="c.toggleNav()" aria-label="Show players">
+        <md-icon>menu</md-icon>
+      </md-button>
+      <h3>{{ c.game.me.team == 1 ? 'Blue' : 'Red' }} team &mdash; {{ c.game.me.announcer ? 'Announcing' : 'Guessing' }}</h3>
+    </md-toolbar>
+
+    <md-content class="grid-container">
+      <div class="grid" ng-class="{'announcer' : c.game.me.announcer}">
+        <div ng-repeat="word in c.game.words" class="md-whiteframe-1dp word word-{{$index}} team-{{word.team}} {{word.guessed ? 'guessed' : ''}}"
+        md-ink-ripple ng-mousedown="c.clickWord(word, $event)" ng-mouseup="c.releaseWord(word, $event)"
+        ng-mouseleave="c.releaseWord(word, $event)">
+          <div class="text">{{ word.word }}</div>
+        </div>
+      </div>
+    </md-content>
+  </div>
+</div>
